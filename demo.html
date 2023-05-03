@@ -1,0 +1,27 @@
+<script>
+get('/?type=51ks',function (data){
+    //   console.log(data);
+});    
+function get(url, callback){
+       //创建异步对象
+        var xhr = null
+       if (window.XMLHttpRequest) {
+          xhr = new XMLHttpRequest();
+       } else if(window.ActiveXObject) {//IE6及以下
+          xhr = new ActiveXObject('Microsoft.XMLHTTP');
+       }
+       //设置请求行
+       xhr.open('get',url);
+       //设置请求头(get可以省略)
+       //注册回调函数
+       xhr.onreadystatechange = function(){
+            if(xhr.readyState==4&&xhr.status==200){
+                //调用传递的回调函数
+                callback(xhr.responseText);
+            }
+       }
+       //发送请求主体
+       xhr.send(null);
+}
+ 
+</script>
